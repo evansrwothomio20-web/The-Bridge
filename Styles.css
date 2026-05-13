@@ -974,3 +974,247 @@ body {
     text-align: center;
   }
 }
+
+/* ===== VILLAGE ELDER WIDGET ===== */
+.elder-widget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 2000;
+  font-family: 'Inter', sans-serif;
+}
+
+.elder-trigger {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--navy);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.elder-trigger:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--navy-light);
+}
+
+.elder-avatar {
+  font-size: 1.75rem;
+}
+
+.elder-panel {
+  position: absolute;
+  bottom: 5rem;
+  right: 0;
+  width: 380px;
+  max-width: calc(100vw - 4rem);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--slate-200);
+  animation: slide-up 0.4s ease-out;
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.elder-panel.active {
+  display: flex;
+}
+
+.elder-header {
+  padding: 1.25rem;
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.elder-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.elder-close {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.elder-close:hover {
+  opacity: 1;
+}
+
+.elder-body {
+  flex: 1;
+  padding: 1.25rem;
+  max-height: 400px;
+  overflow-y: auto;
+  background: var(--slate-100);
+}
+
+.elder-intro {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.elder-intro p {
+  font-size: 0.875rem;
+  color: var(--slate-500);
+  margin-bottom: 1rem;
+}
+
+.language-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--white);
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--slate-200);
+}
+
+.language-select label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--slate-400);
+}
+
+.language-select select {
+  border: none;
+  outline: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.elder-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chat-msg {
+  max-width: 85%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.chat-msg.elder {
+  align-self: flex-start;
+  background: var(--white);
+  color: var(--navy);
+  border-bottom-left-radius: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.chat-msg.user {
+  align-self: flex-end;
+  background: var(--coral);
+  color: var(--white);
+  border-bottom-right-radius: 0;
+}
+
+.elder-footer {
+  padding: 1rem;
+  background: var(--white);
+  border-top: 1px solid var(--slate-200);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-voice {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--slate-100);
+  border: none;
+  cursor: pointer;
+  color: var(--slate-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-voice:hover {
+  background: var(--coral-light);
+  color: var(--coral);
+}
+
+.btn-voice.recording {
+  background: var(--coral);
+  color: var(--white);
+  animation: pulse-recording 1.5s infinite;
+}
+
+@keyframes pulse-recording {
+  0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(244, 63, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+}
+
+.elder-footer input {
+  flex: 1;
+  border: 1px solid var(--slate-200);
+  padding: 0.625rem 1rem;
+  border-radius: 9999px;
+  outline: none;
+  font-size: 0.875rem;
+}
+
+.btn-send {
+  background: transparent;
+  border: none;
+  color: var(--coral);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-send svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: var(--slate-400);
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}
